@@ -25,7 +25,7 @@
 	
 	<groupId>uk.co.blackpepper.bowman</groupId>
 	<artifactId>bowman-parent</artifactId>
-	<version>0.2.4-SNAPSHOT</version>
+	<version>0.2.7-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<description>
@@ -65,10 +65,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<spring-boot.version>1.5.6.RELEASE</spring-boot.version>
+		<spring-boot.version>1.5.9.RELEASE</spring-boot.version>
 		
 		<jackson.version>2.9.0</jackson.version>
-		<spring-hateoas.version>0.24.0.BUILD-SNAPSHOT</spring-hateoas.version>
 	</properties>
 
 	<modules>
@@ -91,6 +90,12 @@
 				<version>${spring-boot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.springframework.hateoas</groupId>
+				<artifactId>spring-hateoas</artifactId>
+				<version>0.24.0.RELEASE</version>
 			</dependency>
 			
 			<dependency>
@@ -124,43 +129,7 @@
 				<artifactId>jackson-databind</artifactId>
 				<version>${jackson.version}</version>
 			</dependency>
-			
-			<dependency>
-				<groupId>org.springframework.hateoas</groupId>
-				<artifactId>spring-hateoas</artifactId>
-				<version>${spring-hateoas.version}</version>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
-	<!-- Snapshot repository for unreleased Spring HATEOAS artifact -->
-
-	<repositories>
-		<repository>
-			<id>spring-snapshots</id>
-			<url>https://repo.spring.io/snapshot</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	
-	<!-- Skip enforcer now we have snapshot dependency -->
-	
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<artifactId>maven-enforcer-plugin</artifactId>
-					<configuration>
-						<skip>true</skip>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
 
 </project>
